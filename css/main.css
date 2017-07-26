@@ -1,9 +1,23 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Serif|Roboto');
+@import url('normalize.css');
+
+html,body {
+    height: 100%;
+    width: 100%;
+}
 
 body {
     font-family: 'Roboto', sans-serif;
+    background-color: rgb(240, 240, 240);
+    color: #222;
+    display: flex;
+    justify-content: center;
 }
 
 h1,h2,h3,h4,h5,h6 {
     font-family: 'Noto Serif', serif;
+}
+
+.fancy {
+    text-shadow: 0 0px 1px rgba(17, 17, 17, 0.96);
 }
