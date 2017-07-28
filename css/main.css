@@ -49,5 +49,8 @@ h1 small {
 
 .container {
     width: 92vw;
-    display:grid;
 }
+
+figure {
+     float: right;
+ }
