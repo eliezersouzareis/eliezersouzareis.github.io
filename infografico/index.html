@@ -1,0 +1,261 @@
+<!--
+Eliezer de Souza dos Reis
+Alex Wagner da Silva
+-->
+
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>10 Lugares para se visitar antes que desapareçam</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/velocity.min.js"></script>
+    <script type="text/javascript" src="js/velocity.ui.min.js"></script>
+  </head>
+  <body>
+    <div>
+      <div class="go-back">
+        <a href="#index" class="button button-primary">
+          <i class="fa fa-angle-double-up"></i>
+        </a>
+      </div>
+      <div class="fullPage" id="index">
+        <header class="text-center">
+          <h1>10 Lugares para se visitar antes que desapareçam</h1>
+        </header>
+        <div id="viewer"></div>
+      </div>
+      <div class="page" id="Galapagos" onmouseover="GalapagosEntry()">
+        <article>
+          <header>
+            <h3>1 - Ilhas Galápagos - Equador</h3>
+          </header>
+          <section>
+            Por que? O turismo está aumentando em 12% ao ano. Hotéis, restaurantes e mais veículos motorizados estão tirando a beleza natural das ilhas uma vez isoladas. Os trabalhadores que contrabandeiam animais que compõem a vida selvagem local para alimentos
+            e cruzeiros, acabam trazendo ratos para a ilha, que contribuem para a declinação das maravilhas naturais das Galápagos
+          </section>
+          <section>
+            <ul>
+              <li> Ameaça: destruição de ecossistema. </li>
+              <li> Tempo Restante Estimado: indeterminado. </li>
+              <li> Causa: turismo em massa. </li>
+            </ul>
+          </section>
+          <aside>
+            <header class="text-center"><i class="fa fa-exclamation-circle"></i></header>
+            <ul>
+              <li> Cerca de 9000 espécies vivem nas ilhas e em águas próximas.</li>
+              <li> Mais de 3/4 dos répteis e aves terrestres são endêmicas.</li>
+            </ul>
+          </aside>
+        </article>
+      </div>
+      <div class="page" id="Maldivas" onmouseover="MaldivasEntry()">
+        <article>
+          <header>
+            <h3>2 - As Maldivas</h3>
+          </header>
+          <section>
+            Por que? Maldivas é a nação mais baixa do mundo - uma vez que 960 das suas 1.200 ilhas (80%) não estão a mais de 1m acima do nível do mar, dentro de 100 anos as Maldivas podem tornar-se inabitáveis. É tão grave que, em 2008, o presidente anunciou que
+            o governo começaria a comprar terras em outros países, incluindo a Índia, para futuras casas para cidadãos deslocados pelo aumento das águas.
+          </section>
+          <section>
+            <ul>
+              <li> Ameaça: afundamento.</li>
+              <li> Tempo Restante Estimado: Menos de 100 anos. </li>
+              <li> Causa: aumento do nível do mar, branqueamento dos corais. </li>
+            </ul>
+          </section>
+          <aside>
+            <header class="text-center"><i class="fa fa-exclamation-circle"></i></header>
+            <ul>
+              <li>90% dos recifes de corais foram perdidos pelo branqueamento de corais.</li>
+            </ul>
+          </aside>
+        </article>
+      </div>
+      <div class="page" id="BarreiraDeCoral" onmouseover="BarreiraDeCoralEntry()">
+        <article>
+        <header>
+          <h3>3 - Grande Barreira de Coral - Austrália</h3>
+        </header>
+        <section>
+          Por que? O aumento das temperaturas do oceano, a poluição da água, a acidificação dos oceanos e os ciclones destroem continuamente o recife e causaram o branqueamento de corais em massa. Estima-se que 60% dos recifes de coral do mundo serão perdidos até
+          2030. 8.000 anos de criação natural podem desaparecer dentro de nossas vidas.
+        </section>
+        <section>
+          <ul>
+            <li> Ameaça: Branqueamento de corais. </li>
+            <li> Tempo Restante Estimado: menos de 100 anos. </li>
+            <li> Causa: mudanças climáticas, poluição da água, acidificação dos oceanos. </li>
+          </ul>
+        </section>
+        <aside>
+          <header class="text-center"><i class="fa fa-exclamation-circle"></i></header>
+          <ul>
+            <li> 350 espécies de corais. </li>
+            <li> únicos seres vivos na Terra visíveis do espaço. </li>
+          </ul>
+        </aside>
+      </article>
+    </div>
+      <div class="page" id="Veneza" onmouseover="VenezaEntry()">
+        <article>
+          <header>
+            <h3>4 - Veneza - Itália</h3>
+          </header>
+          <section>
+            Por que? Veneza tem afundado, mas o aumento do nível do mar tornou a situação mais dramática. A frequência das inundações aumenta a cada ano, deixando muitos a se perguntar quanto mais Veneza pode ficar acima da água. O turismo também é um fator contribuinte.
+            Em 2007, 21 milhões de turistas visitaram Veneza (quase 40 vezes o tamanho de sua população).
+          </section>
+          <section>
+            <ul>
+              <li> Ameaça: afundamento. </li>
+              <li> Tempo Restante Estimado: menos de 70 anos. </li>
+              <li> Causa: aumento do nível do mar. </li>
+            </ul>
+          </section>
+        </article>
+      </div>
+      <div class="page" id="MarMorto" onmouseover="MarMortoEntry()">
+        <article>
+          <header>
+            <h3>5 - Mar Morto - Israel, Jordânia</h3>
+          </header>
+          <section>
+            Por que? Nas últimas quatro décadas, o lago salgado encolheu um terço e afundou 80 pés (aproximadamente 24m), com resorts e restaurantes à beira-mar, a quase uma milha da costa. O rio Jordão é a única fonte do lago e, à medida que os países vizinhos tocam
+            suas águas, pouco atinge o Mar Morto, que pode desaparecer em 50 anos.
+          </section>
+          <section>
+            <ul>
+              <li> Ameaça: encolhimento. </li>
+              <li> Tempo Restante estimado: menos de 50 anos. </li>
+              <li> Causa: recebendo menos água do rio Jordão. </li>
+            </ul>
+          </section>
+          <aside>
+            <header class="text-center"><i class="fa fa-exclamation-circle"></i></header>
+            <ul>
+              <li> 33,7% de salinidade, 10 vezes mais salgado que o oceano. </li>
+              <li> com densidade de 1,24 kg/L faz com que a natação se assemelhe com flutuação. </li>
+            </ul>
+          </aside>
+        </article>
+      </div>
+      <div class="page" id="Alpes" onmouseover="AlpesEntry()">
+        <article>
+          <header>
+            <h3>6 - Os Alpes – Europa (Alemanha, Áustria, Eslovênia, França, Itália, Liechtenstein, Mônaco e Suíça.)</h3>
+          </header>
+          <section>
+            Por que? Os Alpes europeus situam-se a uma altitude mais baixa do que as Montanhas Rochosas e suas geleiras e estações de esqui são mais suscetíveis aos efeitos do aquecimento global. As temperaturas aumentaram duas vezes mais do que a temperatura média
+            global desde o século XIX. As famosas geleiras podem desaparecer até 2050.
+          </section>
+          <section>
+            <ul>
+              <li> Ameaça: perda de gelo.</li>
+              <li> Tempo restante estimado: 40 anos. </li>
+              <li> Causa: aquecimento global. </li>
+            </ul>
+          </section>
+        </article>
+      </div>
+      <div class="page" id="Madagascar"  onmouseover="MadagascarEntry()">
+        <article>
+          <header>
+            <h3>7 - Madagascar</h3>
+          </header>
+          <section>
+            Por que? Se nada for feito para salvar a quarta maior ilha do mundo, sua floresta e seus habitantes únicos desaparecerão em 35 anos. Madagascar é conhecida pelos lêmures. Os ecossistemas florestais estão sendo destruídos pela exploração madeireira, a
+            queima de fazendas de subsistência e a caça furtiva.
+          </section>
+          <section>
+            <ul>
+              <li>Ameaça: destruição florestal.</li>
+              <li>Tempo restante estimado: menos de 35 anos.</li>
+              <li>Causa: exploração madeireira, caça furtiva e agricultura de subsistência.</li>
+            </ul>
+          </section>
+          <aside>
+            <header class="text-center"><i class="fa fa-exclamation-circle"></i></header>
+            <ul>
+              <li> mais de 80% da flora e fauna de Madagascar não são encontrados em outro lugar da Terra.</li>
+            </ul>
+          </aside>
+        </article>
+      </div>
+      <div class="page" id="BaciaDoCongo" onmouseover="BaciaDoCongoEntry()">
+        <article>
+          <header>
+            <h3>8 - Bacia do Congo – África (República do Congo, República Democrática do Congo, Angola)</h3>
+          </header>
+          <section>
+            Por que? De acordo com a ONU, cerca de dois terços da floresta e suas plantas e vida selvagem únicas podem ser perdidas até 2040, a menos que sejam tomadas medidas mais efetivas para protegê-la. 10 milhões de hectares de floresta são degradados a cada
+            ano devido à mineração, exploração madeireira ilegal, agricultura, pecuária e guerrilha.
+          </section>
+          <section>
+            <ul>
+              <li> Ameaça: Destruição de floresta tropical </li>
+              <li> Tempo restante estimado: menos de 25 anos. </li>
+              <li> Causa: mineração, exploração madeireira ilegal, agricultura, pecuária e guerrilha</li>
+            </ul>
+          </section>
+        </article>
+      </div>
+      <div class="page" id="Geleiras" onmouseover="GeleirasEntry()">
+        <article>
+          <header>
+            <h3>9 - Parque Nacional das Geleiras - Noruega</h3>
+          </header>
+          <section>
+            Há 100 anos, haviam 150 geleiras espalhadas por todo o Parque Nacional das Geleiras. Em 2005, apenas 27 permaneceram e elas deverão desaparecer até 2030, ou antes. Na ausência de água fria, o ecossistema do parque pode mudar drasticamente enquanto as
+            geleiras desapareceram.
+          </section>
+          <section>
+            <ul>
+              <li> Ameaça: perda de gelo. </li>
+              <li> Tempo restante estimado: menos de 20 anos. </li>
+              <li> Causa: aquecimento global. </li>
+            </ul>
+          </section>
+        </article>
+      </div>
+      <div class="page" id="TajMahal" onmouseover="TajMahalEntry()">
+        <article>
+          <header>
+            <h3>10 - Taj Mahal - Índia</h3>
+          </header>
+          <section>
+            Entre as multidões e a poluição do ar que está comendo sua fachada de pedra branca, os funcionários de turismo estão considerando fechar este marco do século XVII ao público, deixando sua fabulosa simetria em cúpula visível apenas de longe.
+          </section>
+          <section>
+            <ul>
+              <li> Ameaça: fechamento ao público. </li>
+              <li> Tempo restante estimado: 5 anos. </li>
+              <li> Causa: poluição do ar e turismo em massa. </li>
+            </ul>
+          </section>
+        </article>
+      </div>
+      <div class="footer text-center">
+            <h3>Agradecimentos/Créditos</h3>
+            <ul>
+              <li /><a href="https://www.blendswap.com/blends/view/86599"> Modelo da Terra(licença não comercial)</a>
+              <li /><a href="https://codepen.io/gmoyer/pen/dpxpLQ"> Idéia para as nuvens e estrelas</a>
+              <li /><a href="https://codepen.io/qkevinto/pen/EVGrGq"> Marcadores de localização</a>
+              <li /><a href="http://pinaytraveller.com/archives/6238"> Dados para o infografico</a>
+              <li /><a href="https://www.wikimedia.org/"> Imagens</a>
+            </ul>
+
+      </div>
+      </div>
+    <script type="text/javascript" src="js/animations.js"></script>
+    <script type="text/javascript" src="js/three.min.js"></script>
+    <script type="text/javascript" src="js/OrbitControls.js"></script>
+    <script type="text/javascript" src="js/earthView.js"></script>
+  </body>
+
+</html>
