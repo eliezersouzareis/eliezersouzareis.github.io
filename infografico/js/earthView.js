@@ -31,8 +31,8 @@ function rotateAround(point, center, angle) {
     };
 }
 
-var WATER_DEPTH = 95,
-    WAVE_HEIGHT = 2,
+var WATER_DEPTH = 96,
+    WAVE_HEIGHT = 1,
     WAVE_SPEED = 400,
     WATER_COLOR = '#28589e',
     INTERSECTED;
@@ -145,8 +145,10 @@ function initEarth() {
     clouds = [];
     water = {};
     createWater();
-    for (var i = 0; i < randint(8, 16); i++) {
-        clouds.push(createCloud());
+    for (var i = 0; i < randint(16, 32); i++) {
+        loader = new THREE.JSONLoader();
+        loader.load('models/cloud.json', addCloud);
+        // clouds.push(createCloud());
     }
     loader = new THREE.JSONLoader();
     loader.load('models/low_poly_earth.json', function(geometry, materials) {
@@ -213,6 +215,66 @@ function initSpace() {
     scene.add(light);
 }
 
+function addCloud(geometry, materials) {
+    gr = {};
+    gr.geometry = geometry;
+    gr.material = materials;
+    gr.sphere = new THREE.Mesh(geometry, materials);
+    scene.add(gr.sphere);
+    gr.sphere.scale.z = randint(20, 25)/3;
+    gr.sphere.scale.y = randint(50, 50)/3;
+    gr.sphere.scale.x = randint(50, 50)/3;
+    gr.sphere.position.x = randint(100, 50);
+    randRotate = randint(0, 360);
+    point = {
+        x: gr.sphere.position.x,
+        y: gr.sphere.position.y
+    };
+    center = {
+        x: 0,
+        y: 0
+    };
+    r = rotateAround(point, center, randRotate);
+    gr.sphere.position.x = r.x;
+    gr.sphere.position.y = r.y;
+    gr.sphere.rotation.z = randRotate * Math.PI / 180;
+
+    randRotate = randint(0, 360);
+    point = {
+        x: gr.sphere.position.y,
+        y: gr.sphere.position.z
+    };
+    r = rotateAround(point, center, randRotate);
+    gr.sphere.rotation.x = randRotate * Math.PI / 180;
+    gr.sphere.position.y = r.x;
+    gr.sphere.position.z = r.y;
+    gr.rx = randint(-5, 20) / 100;
+    gr.ry = randint(-5, 20) / 100;
+    gr.rz = randint(-5, 15) / 100;
+    center = {
+        x: 0,
+        y: 0
+    };
+    r = rotateAround(point, center, randRotate);
+    gr.sphere.position.x = r.x;
+    gr.sphere.position.y = r.y;
+    gr.sphere.rotation.z = randRotate * Math.PI / 180;
+
+    randRotate = randint(0, 360);
+    point = {
+        x: gr.sphere.position.y,
+        y: gr.sphere.position.z
+    };
+    r = rotateAround(point, center, randRotate);
+    gr.sphere.rotation.x = randRotate * Math.PI / 180;
+    gr.sphere.position.y = r.x;
+    gr.sphere.position.z = r.y;
+    gr.rx = randint(-5, 20) / 100;
+    gr.ry = randint(-5, 20) / 100;
+    gr.rz = randint(-5, 15) / 100;
+    clouds.push(gr);
+}
+
 
 function createCloud() {
     gr = {};
@@ -232,7 +294,44 @@ function createCloud() {
     point = {
         x: gr.sphere.position.x,
         y: gr.sphere.position.y
+    };    gr.geometry = new THREE.SphereBufferGeometry(50, 10, 10);
+    gr.material = new THREE.MeshLambertMaterial({
+        color: 0xffffff,
+        transparent: true,
+        opacity: 0.7
+    });
+    gr.sphere = new THREE.Mesh(gr.geometry, gr.material);
+    scene.add(gr.sphere);
+    gr.sphere.scale.z = randint(20, 25) / 100;
+    gr.sphere.scale.y = randint(50, 50) / 100;
+    gr.sphere.scale.x = randint(50, 50) / 100;
+    gr.sphere.position.x = randint(110, 50);
+    randRotate = randint(0, 360);
+    point = {
+        x: gr.sphere.position.x,
+        y: gr.sphere.position.y
     };
+    center = {
+        x: 0,
+        y: 0
+    };
+    r = rotateAround(point, center, randRotate);
+    gr.sphere.position.x = r.x;
+    gr.sphere.position.y = r.y;
+    gr.sphere.rotation.z = randRotate * Math.PI / 180;
+
+    randRotate = randint(0, 360);
+    point = {
+        x: gr.sphere.position.y,
+        y: gr.sphere.position.z
+    };
+    r = rotateAround(point, center, randRotate);
+    gr.sphere.rotation.x = randRotate * Math.PI / 180;
+    gr.sphere.position.y = r.x;
+    gr.sphere.position.z = r.y;
+    gr.rx = randint(-10, 20) / 100;
+    gr.ry = randint(-10, 20) / 100;
+    gr.rz = randint(-10, 20) / 100;
     center = {
         x: 0,
         y: 0
@@ -352,7 +451,7 @@ function initMarkers() {
     };
     scene.add(obj);
     markers.push(obj);
-    var marmorto = markerProto.latLongToVector3(28, 36, 51, 51);
+    var marmorto = markerProto.latLongToVector3(19, 55, 51, 51);
     obj = markerProto.marker(MARKER_SIZE, 'red', marmorto);
     obj.userData = {
         URL: "#MarMorto"
