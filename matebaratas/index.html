@@ -1,0 +1,224 @@
+<html>
+
+<head>
+  <title>Mate as Baratas</title>
+  <link rel="icon" type="image/png" href="assets/cocro-icon.png" sizes="16x16">
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <style>
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body style="height: 100%;width: 100%;">
+
+  <script type="text/javascript" src="js/pixi.min.js"></script>
+  <script type="text/javascript">
+    const app = new PIXI.Application({
+      resolution: window.devicePixelRatio || 1, resizeTo: window
+    });
+    document.body.appendChild(app.view);
+
+    app.stage.interactive = true;
+
+    const container = new PIXI.Container();
+    app.stage.addChild(container);
+
+    const padding = 100;
+    const bounds = new PIXI.Rectangle(
+      -padding,
+      -padding,
+      app.screen.width + padding * 2,
+      app.screen.height + padding * 2,
+    );
+
+
+    const style = new PIXI.TextStyle({
+      fontFamily: 'Arial',
+      fontSize: 36,
+      fontStyle: 'italic',
+      fontWeight: 'bold',
+      fill: ['#ff00ff', '#00ff00'], // gradient
+      stroke: '#4a1850',
+      strokeThickness: 5,
+      dropShadow: true,
+      dropShadowColor: '#000000',
+      dropShadowBlur: 4,
+      dropShadowAngle: Math.PI / 6,
+      dropShadowDistance: 6,
+      wordWrap: false,
+      wordWrapWidth: 440,
+    });
+
+    let dedCounter = 0;
+
+    const richText = new PIXI.Text('Mate as baratas!', style);
+    richText.x = 0;
+    richText.y = 0;
+
+    app.stage.addChild(richText);
+
+    const dedCounterText = new PIXI.Text('Score: 0', style);
+    dedCounterText.x = 0;
+    dedCounterText.y = 40;
+
+    app.stage.addChild(dedCounterText);
+
+    const bg = PIXI.Sprite.from('assets/bg.jpg');
+    bg.width = app.screen.width;
+    bg.height = app.screen.height;
+
+    bg.alpha = 0.4;
+
+    container.addChild(bg);
+
+    const crocoAlive = PIXI.Texture.from('assets/cocro.png');
+    const crocoDed = PIXI.Texture.from('assets/cocro_ded.png');
+    var counter = 0;
+    var sw = false;
+    const cocros = [];
+    for (let i = 0; i < 20; i++) {
+      const cocro = new PIXI.Sprite(crocoAlive);
+      cocro.tagged = false;
+      cocro.anchor.set(0.5);
+      container.addChild(cocro);
+
+      cocro.direction = Math.random() * Math.PI * 2;
+      cocro.speed = 1;
+      cocro.turnSpeed = Math.random() - 0.8;
+
+      cocro.x = Math.random() * bounds.width;
+      cocro.y = Math.random() * bounds.height;
+      cocro.zOrder = 2;
+
+      cocro.scale.set(1 + Math.random() * 0.3);
+      cocro.original = new PIXI.Point();
+      cocro.original.copy(cocro.scale);
+
+      cocro.interactive = true;
+      //cocro.buttonMode = true;
+
+      cocro.on('pointertap', onClick);
+      cocro.on('mouseover', onHover)
+      //cocro.on('tap', onClick);
+
+      cocro.isAlive = true;
+      cocro.isTriggered = false;
+      cocro.triggerTimer = 0;
+      cocro.deadTimer = 100;
+      cocros.push(cocro);
+    }
+
+    function onClick() {
+      if (this.isAlive) {
+        dedCounter += 1;
+        this.isAlive = false;
+        this.zOrder = 1;
+        this.texture = crocoDed;
+        this.speed = 0;
+        this.turnSpeed = 0;
+        dedCounterText.text = 'Score: ' + dedCounter;
+      }
+      // if (counter === 0)
+      //   sw = false;
+      // if (counter === 20)
+      //   sw = true;
+      // if (sw && this.alpha === 0.2) {
+      //   this.alpha = 1;
+      //   counter -= 1;
+      // } else if (this.alpha === 1) {
+      //   this.speed = 7;
+      //   this.alpha = 0.2;
+      //   counter += 1;
+      // }
+    }
+
+    function onHover() {
+      if (this.isAlive && !this.isTriggered) {
+        if ((Math.floor(Math.random() * 10)) % 2 === 0) {
+          this.direction += 180;
+          this.isTriggered = true;
+
+        }
+        //this.rotation  = this.diretion;
+        //this.speed = 10;
+      }
+    }
+
+
+    // container.x = app.screen.width / 2;
+    // container.y = app.screen.height / 2;
+    // container.pivot.x = container.width / 2;
+    // container.pivot.y = container.height / 2;
+
+    // app.ticker.add((delta) => {
+    //   container.rotation -= 0.01 * delta;
+    // });
+    let count = 0;
+
+    app.ticker.add(() => {
+      count += 0.05;
+
+      for (let i = 0; i < cocros.length; i++) {
+        const cocro = cocros[i];
+
+        cocro.direction += cocro.turnSpeed * 0.01;
+        cocro.x += Math.sin(cocro.direction) * cocro.speed;
+        cocro.y += Math.cos(cocro.direction) * cocro.speed;
+
+        //object.x = object.x + distance * Math.cos(object.rotation);
+        //object.y = object.y + distance * Math.sin(object.rotation);
+        //cocro.scale.x = cocro.original.x + Math.sin(count) * 0.2;
+
+        if (cocro.x < bounds.x) {
+          cocro.x += bounds.width;
+        } else if (cocro.x > bounds.x + bounds.width) {
+          cocro.x -= bounds.width;
+        }
+
+        if (cocro.y < bounds.y) {
+          cocro.y += bounds.height;
+        } else if (cocro.y > bounds.y + bounds.height) {
+          cocro.y -= bounds.height;
+        }
+
+        if (cocro.isTriggered && cocro.isAlive) {
+          if (cocro.triggerTimer <= 8) {
+            cocro.triggerTimer += 0.075;
+            cocro.speed = 8 / cocro.triggerTimer;
+          } else {
+            cocro.isTriggered = false;
+            cocro.triggerTimer = 0;
+            cocro.speed = 1;
+          }
+        }
+        if (!cocro.isAlive) {
+          if (cocro.deadTimer > 0) {
+            cocro.alpha = cocro.deadTimer / 100;
+            cocro.deadTimer -= 0.1;
+
+          } else {
+            cocro.isAlive = true;
+            cocro.texture = crocoAlive;
+            cocro.deadTimer = 100;
+            cocro.x = Math.random() * bounds.width;
+            cocro.y = Math.random() * bounds.height;
+            cocro.alpha = 1;
+            cocro.zOrder = 2;
+            cocro.speed = 1;
+          }
+        }
+      }
+    });
+
+
+  </script>
+
+</body>
+
+</html>
