@@ -1,3 +1,4 @@
 [submodule "pet-feliz-docs"]
 	path = pet-feliz-docs
 	url = https://github.com/eliezersouzareis/pet-feliz-docs.git
+	branch = main
