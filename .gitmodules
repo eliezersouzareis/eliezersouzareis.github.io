@@ -1,0 +1,3 @@
+[submodule "c4-diagrams"]
+	path = c4-diagrams
+	url = https://github.com/eliezersouzareis/c4-diagrams.git
